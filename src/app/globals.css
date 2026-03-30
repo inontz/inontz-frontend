@@ -26,6 +26,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-y: auto;
 }
 
 /* Touch action for mobile */
@@ -219,6 +220,24 @@ button {
   button, input, textarea, select, [role="button"] {
     -webkit-app-region: no-drag;
   }
+}
+
+/* Dropdown menu scroll fix */
+div[class*="overflow-y-auto"]::-webkit-scrollbar {
+  width: 6px;
+}
+
+div[class*="overflow-y-auto"]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+div[class*="overflow-y-auto"]::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.5);
+  border-radius: 3px;
+}
+
+div[class*="overflow-y-auto"]::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.8);
 }
 
 /* Print styles */
