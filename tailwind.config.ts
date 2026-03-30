@@ -5,8 +5,8 @@ const config: Config = {
 		extend: {
 			animation: {
 				bounce: "bounce 0.6s infinite",
-				float: "float 6s ease-in-out infinite",
-				"float-slow": "float 8s ease-in-out infinite",
+				"float-anim": "float 6s ease-in-out infinite",
+				"float-anim-slow": "float 8s ease-in-out infinite",
 				twinkle: "twinkle 5s ease-in-out infinite",
 				aurora: "aurora 15s ease infinite",
 			},

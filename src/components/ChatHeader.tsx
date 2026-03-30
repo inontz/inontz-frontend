@@ -135,7 +135,8 @@ export default function ChatHeader({ onOpenSettings }: ChatHeaderProps) {
 
           {isOpen && (
             <div 
-              className="absolute top-full left-0 right-0 mt-1 bg-slate-800 border border-slate-700 rounded-lg shadow-xl max-h-64 overflow-y-auto z-50"
+              className="absolute top-full left-0 right-0 mt-1 bg-slate-800 border border-slate-700 rounded-lg shadow-xl max-h-64 overflow-y-scroll z-50"
+              style={{ overscrollBehavior: 'contain' }}
               onWheel={handleDropdownWheel}
               onTouchMove={handleDropdownTouch}
             >
