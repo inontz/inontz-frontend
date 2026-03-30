@@ -98,7 +98,7 @@ export default function ChatHeader({ onOpenSettings }: ChatHeaderProps) {
   };
 
   return (
-    <div className="px-3 py-2 border-b border-slate-700/50 bg-slate-900/50 backdrop-blur-sm">
+    <div className="px-3 py-2 border-b border-slate-700/50 bg-slate-900/50 backdrop-blur-sm relative z-10">
       <div className="flex items-center gap-2">
         <button 
           onClick={onOpenSettings}
@@ -127,7 +127,7 @@ export default function ChatHeader({ onOpenSettings }: ChatHeaderProps) {
 
           {isOpen && (
             <div 
-              className="absolute top-full left-0 right-0 mt-1 bg-slate-800 border border-slate-700 rounded-lg shadow-xl max-h-64 overflow-y-auto z-50"
+              className="absolute top-full left-0 right-0 mt-1 bg-slate-800 border border-slate-700 rounded-lg shadow-xl max-h-64 overflow-y-auto z-[100] pointer-events-auto"
             >
               {error ? (
                 <div className="p-3 text-sm text-red-400">
