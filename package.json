@@ -18,9 +18,6 @@
 		"react": "19.2.1",
 		"react-dom": "19.2.1"
 	},
-	"optionalDependencies": {
-		"@cloudflare/next-on-pages": "^1.4.2"
-	},
 	"devDependencies": {
 		"@eslint/eslintrc": "3",
 		"@tailwindcss/postcss": "4.1.17",
@@ -38,11 +35,10 @@
 	"private": true,
 	"scripts": {
 		"build": "next build",
-		"build:pages": "next build && wrangler pages build",
 		"cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
 		"check": "npm run build && tsc",
 		"deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-		"deploy:pages": "npm run build:pages && wrangler pages deploy",
+		"deploy:pages": "wrangler pages deploy",
 		"dev": "next dev",
 		"lint": "next lint",
 		"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
