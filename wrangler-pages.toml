@@ -1,0 +1,22 @@
+# Cloudflare Pages Configuration
+# For use with Cloudflare Pages instead of Workers
+
+name = "inontz-frontend"
+pages_build_output_dir = ".next"
+
+[env.production]
+routes = [
+  { pattern = "/*", zone_name = "example.com" }
+]
+
+[build]
+# Next.js build output directory
+output_dir = ".next/public"
+# Command to build the Next.js app for Pages
+command = "npm run build"
+# Node.js version
+node_version = "20.11.0"
+
+[env.preview]
+# Preview environment configuration
+name = "inontz-frontend-preview"

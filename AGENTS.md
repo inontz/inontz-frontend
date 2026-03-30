@@ -22,12 +22,19 @@ npm run lint             # Run ESLint with next/typescript rules
 # Type checking
 npm run check            # Run build + TypeScript type check (tsc --noEmit)
 
-# Cloudflare deployment (requires Wrangler)
+# Cloudflare Workers deployment (requires Wrangler)
 npm run cf-typegen       # Generate Cloudflare env types
 npm run preview          # Preview on Cloudflare Workers
 npm run deploy           # Deploy to Cloudflare Workers
 
-# Deployment flow: build -> opennextjs-cloudflare deploy
+# Cloudflare Pages deployment (requires Wrangler)
+npm run build:pages      # Build for Cloudflare Pages
+npm run preview:pages    # Preview on Cloudflare Pages (local)
+npm run deploy:pages     # Deploy to Cloudflare Pages
+
+# Deployment flows:
+# Workers: build -> opennextjs-cloudflare deploy
+# Pages: npm run deploy:pages (connects via git in Cloudflare dashboard)
 ```
 
 ### Single Test Commands
@@ -192,6 +199,34 @@ src/
 ## Development Notes
 
 - Uses Bun as package manager (bun.lock present)
-- Cloudflare Workers deployment via `@opennextjs/cloudflare`
+- **Dual Cloudflare deployment support:**
+  - **Workers**: Uses `@opennextjs/cloudflare` for edge computing (see `wrangler.jsonc`)
+  - **Pages**: Uses native Next.js adapter (see `wrangler-pages.toml`)
 - Environment variables in `env.d.ts`
 - No testing framework currently configured
+
+## Cloudflare Pages Setup
+
+Cloudflare Pages is now fully supported alongside Workers. Pages automatically builds and deploys your Next.js app without needing a separate build step.
+
+### Configuration Files
+- `wrangler-pages.toml` - Cloudflare Pages build configuration
+- `wrangler.jsonc` - Cloudflare Workers configuration (original)
+
+### First Time Setup
+1. Connect your GitHub repository to Cloudflare Pages
+2. Set build command to: `npm ci && npm run build`
+3. Set output directory to: `.next`
+4. Set Node.js version to: 20.11.0
+
+### Deployment
+```bash
+# Manual deployment via CLI
+npm run deploy:pages
+
+# Automatic deployment: Push to GitHub (Pages auto-deploys on git push)
+```
+
+### Key Differences
+- **Workers**: Uses edge runtime, requires `opennextjs-cloudflare` build
+- **Pages**: Uses standard Next.js build, no special adapter needed

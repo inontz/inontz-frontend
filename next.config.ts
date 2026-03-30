@@ -6,6 +6,13 @@ const nextConfig: NextConfig = {
 
 export default nextConfig;
 
-// added by create cloudflare to enable calling `getCloudflareContext()` in `next dev`
-import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
-initOpenNextCloudflareForDev();
+// Support for both Cloudflare Workers and Pages
+// For Workers: uses @opennextjs/cloudflare in dev
+// For Pages: uses native @cloudflare/next-on-pages in build
+
+// Try to load OpenNext configuration for Workers support
+try {
+	require("@opennextjs/cloudflare").initOpenNextCloudflareForDev?.();
+} catch (e) {
+	// @opennextjs/cloudflare is optional, pages will use native cloudflare adapter
+}
